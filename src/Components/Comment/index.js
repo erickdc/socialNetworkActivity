@@ -6,7 +6,7 @@ export class Comment extends React.Component {
   render() {
     const { name, body } = this.props;
     return (
-      <Card bg="light" style={{ width: "50rem" }}>
+      <Card bg="light" style={{ width: "69rem" }}>
         <Card.Body>
           <Row>
             <Col xs="1">

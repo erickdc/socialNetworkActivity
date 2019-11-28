@@ -13,3 +13,9 @@ export function getCommentsSuccess(comments) {
     payload: comments
   };
 }
+export function addComment(comment) {
+  return {
+    type: ActionTypes.CREATE_COMMENT,
+    payload: comment
+  };
+}

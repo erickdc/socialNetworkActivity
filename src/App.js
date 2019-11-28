@@ -7,6 +7,7 @@ import * as appActions from "./actions";
 import { bindActionCreators } from "redux";
 import PostService from "./services/postService";
 import { Container } from "react-bootstrap";
+import CommentField from "./Components/CommentField";
 
 class App extends React.Component {
   componentDidMount() {
@@ -19,6 +20,7 @@ class App extends React.Component {
       .then(comments => this.props.actions.getCommentsSuccess({ comments }));
   }
   getPosts(posts, comments) {
+    console.log(comments);
     return posts.map(post => (
       <div>
         <Post {...post} />
@@ -26,12 +28,12 @@ class App extends React.Component {
           comments
             .filter(co => co.postId === post.id)
             .map(comment => <Comment {...comment} />)}
+        <CommentField postId={post.id}></CommentField>
       </div>
     ));
   }
   render() {
     const { posts, comments } = this.props;
-    console.log(comments);
     return (
       <div className="App">
         <Container>{this.getPosts(posts, comments)}</Container>

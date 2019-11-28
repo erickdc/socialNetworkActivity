@@ -1,7 +1,8 @@
 import * as ActionTypes from "./constants";
 
 const initialState = {
-  posts: []
+  posts: [],
+  comments: []
 };
 
 const appReducer = (state = initialState, action) => {
@@ -12,6 +13,12 @@ const appReducer = (state = initialState, action) => {
     }
     case ActionTypes.GET_COMMENTS_SUCCESS: {
       return { ...state, comments: payload.comments };
+    }
+    case ActionTypes.CREATE_COMMENT: {
+      return {
+        ...state,
+        comments: [...state.comments, payload]
+      };
     }
     default:
       return state;
