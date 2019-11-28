@@ -10,6 +10,9 @@ const appReducer = (state = initialState, action) => {
     case ActionTypes.GET_POSTS_SUCCESS: {
       return { ...state, posts: payload.posts };
     }
+    case ActionTypes.GET_COMMENTS_SUCCESS: {
+      return { ...state, posts: payload.comments };
+    }
     default:
       return state;
   }

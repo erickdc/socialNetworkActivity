@@ -6,3 +6,10 @@ export function getPostsSuccess(posts) {
     payload: posts
   };
 }
+
+export function getCommentsSuccess(comments) {
+  return {
+    type: ActionTypes.GET_COMMENTS_SUCCESS,
+    payload: comments
+  };
+}

@@ -5,10 +5,9 @@ export class Post extends React.Component {
   render() {
     const { title, body } = this.props;
     return (
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+      <Card border="dark" style={{ width: "50rem" }}>
+        <Card.Header>{title}</Card.Header>
         <Card.Body>
-          <Card.Title>{title}</Card.Title>
           <Card.Text>{body}</Card.Text>
           <Button variant="primary">Look Comments</Button>
         </Card.Body>
