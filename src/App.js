@@ -20,14 +20,13 @@ class App extends React.Component {
       .then(comments => this.props.actions.getCommentsSuccess({ comments }));
   }
   getPosts(posts, comments) {
-    console.log(comments);
     return posts.map(post => (
-      <div>
+      <div key={post.id}>
         <Post {...post} />
         {comments &&
           comments
             .filter(co => co.postId === post.id)
-            .map(comment => <Comment {...comment} />)}
+            .map(comment => <Comment key={comment.id} {...comment} />)}
         <CommentField postId={post.id}></CommentField>
       </div>
     ));

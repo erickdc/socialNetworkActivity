@@ -18,7 +18,6 @@ class CommentField extends React.Component {
   };
   handleKeyDown = e => {
     const { postId, actions } = this.props;
-    console.log(this.props);
     if (e.key === "Enter") {
       actions.addComment({
         postId: postId,
