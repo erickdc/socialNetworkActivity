@@ -1,26 +1,40 @@
 import React from "react";
-import logo from "./logo.svg";
+import { connect } from "react-redux";
 import "./App.css";
+import { Post } from "./Components/Post/index.js";
+import * as appActions from "./actions";
+import { bindActionCreators } from "redux";
+import PostService from "./services/postService";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  componentDidMount() {
+    new PostService()
+      .getAllPosts()
+      .then(posts => this.props.actions.getPostsSuccess({ posts }));
+  }
+  render() {
+    const { posts } = this.props;
+    console.log(posts);
+    return <div className="App">{getPosts(posts)}</div>;
+  }
 }
+export const mapStateToProps = ({ appReducer }) => {
+  return {
+    posts: appReducer.posts
+  };
+};
 
-export default App;
+export const mapDispatchToProps = dispatch => {
+  const actions = bindActionCreators(
+    {
+      ...appActions
+    },
+    dispatch
+  );
+  return { actions };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+function getPosts(posts) {
+  return posts.map(post => <Post title={post.title} body={post.body}></Post>);
+}
