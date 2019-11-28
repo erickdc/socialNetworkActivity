@@ -11,7 +11,7 @@ const appReducer = (state = initialState, action) => {
       return { ...state, posts: payload.posts };
     }
     case ActionTypes.GET_COMMENTS_SUCCESS: {
-      return { ...state, posts: payload.comments };
+      return { ...state, comments: payload.comments };
     }
     default:
       return state;

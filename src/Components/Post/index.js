@@ -9,7 +9,6 @@ export class Post extends React.Component {
         <Card.Header>{title}</Card.Header>
         <Card.Body>
           <Card.Text>{body}</Card.Text>
-          <Button variant="primary">Look Comments</Button>
         </Card.Body>
       </Card>
     );
